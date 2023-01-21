@@ -1,0 +1,55 @@
+#include <bits/stdc++.h>
+using namespace std;
+void solve(void)
+{
+    int n,m,q;
+    bool consistent = true;
+    cin>>n>>m>>q;
+    set<int>bus;
+    //total events
+    while(q--)
+    {
+        char ch;
+        int p;
+        cin>>ch>>p;
+        if(ch == '+')
+        {
+            bus.insert(p);
+            if(bus.size()>m)
+            {
+                consistent = false;
+            }
+        }
+        else
+        {
+            if(bus.find(p) != bus.end())
+            {
+                bus.erase(p);
+            }
+            else
+            {
+                consistent = false;
+            }
+        }
+    }
+
+     if(consistent == true)
+     {
+
+    cout<<"consistent"<<endl;
+     }
+    else
+    {
+    cout<<"inconsistent"<<endl; 
+    }
+}
+int main() {
+    
+	int t;
+	cin>>t;
+	while(t--)
+	{
+	    solve();
+	}
+	return 0;
+}
